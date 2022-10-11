@@ -3,8 +3,8 @@ function randomInteger(min, max) {
     if (min > max) {
       [min,max] = [max,min];
     }
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
+    const RAND = min + Math.random() * (max + 1 - min);
+    return Math.floor(RAND);
   }
   return (0 / 0);
 }
