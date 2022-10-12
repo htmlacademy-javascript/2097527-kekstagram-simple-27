@@ -6,14 +6,15 @@ function randomInteger(min, max) {
     const RAND = min + Math.random() * (max + 1 - min);
     return Math.floor(RAND);
   }
-  return (0 / 0);
+  return NaN;
 }
 randomInteger(1, 10);
 
+const inputComment = '32131';
 function lengthComment(comment,maxLength) {
-  if (comment.length <= maxLength) {
+  if (comment.length <= maxLength && typeof inputComment === 'string') {
     return true;
   }
   return false;
 }
-lengthComment ('sjnfjsnfsef', 120);
+lengthComment (inputComment, 120);
