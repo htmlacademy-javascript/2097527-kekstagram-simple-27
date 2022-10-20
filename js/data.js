@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomInteger} from './util';
+import {getRandomArrayElement, getRandomInteger} from './utils';
 import {LIKES_COUNT_MIN, LIKES_COUNT_MAX, COMMENTS_COUNT_MIN, COMMENTS_COUNT_MAX, PHOTO_COUNT, DESCRIPTIONS} from './constants';
 
 const createPhoto = function (index) {
