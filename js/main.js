@@ -1,3 +1,1 @@
-import {getPhoto} from './data';
-
-getPhoto();
+import './generate-img.js';
