@@ -7,7 +7,7 @@ const scaleInput = document.querySelector('.scale__control--value');
 const effectInputNone = document.querySelector('#effect-none');
 
 const onPopupEscKeydown = (evt) => {
-  if (evt.keyCode === 27) {
+  if (evt.key === 'Escape') {
     evt.preventDefault();
     closePhotoForm();
   }
