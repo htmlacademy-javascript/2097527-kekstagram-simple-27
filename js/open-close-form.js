@@ -5,6 +5,9 @@ const uploadPhotoForm = document.querySelector('#upload-file');
 const commentText = document.querySelector('.text__description');
 const scaleInput = document.querySelector('.scale__control--value');
 const effectInputNone = document.querySelector('#effect-none');
+const previewImgBlock = document.querySelector('.img-upload__preview');
+const sliderElement = document.querySelector('.effect-level__slider');
+
 
 const onPopupEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
@@ -24,6 +27,7 @@ function closePhotoForm () {
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
   defaultFormSet();
+  defaultEffectsSet();
 }
 
 function defaultFormSet () {
@@ -34,6 +38,11 @@ function defaultFormSet () {
   if (!effectInputNone.checked) {
     effectInputNone.checked = true;
   }
+}
+
+function defaultEffectsSet () {
+  previewImgBlock.style.filter = 'none';
+  sliderElement.classList.add('visually-hidden');
 }
 
 uploadPhotoForm.addEventListener('change', () => {
