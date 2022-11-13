@@ -28,12 +28,6 @@ noUiSlider.create(sliderElement, {
 
 fieldsetEffects.addEventListener('change', (evt) => {
   switch(evt.target.id) {
-    case 'effect-none' :
-      sliderElement.classList.add('visually-hidden');
-      if (previewImgBlock.classList.contains('effects__preview--none')) {
-        previewImgBlock.style.filter = 'none';
-      }
-      break;
     case 'effect-chrome' :
     case 'effect-sepia' :
       sliderElement.classList.remove('visually-hidden');
@@ -78,6 +72,12 @@ fieldsetEffects.addEventListener('change', (evt) => {
         start: 3,
         step: 0.1,
       });
+      break;
+    default:
+      sliderElement.classList.add('visually-hidden');
+      if (previewImgBlock.classList.contains('effects__preview--none')) {
+        previewImgBlock.style.filter = 'none';
+      }
       break;
   }
 });
