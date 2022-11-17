@@ -26,11 +26,11 @@ function closePhotoForm () {
   photoForm.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
-  defaultFormSet();
-  defaultEffectsSet();
+  setDefaultForm();
+  setDefaultEffects();
 }
 
-function defaultFormSet () {
+function setDefaultForm () {
   uploadPhotoForm.value = '';
   commentText.value = '';
   scaleInput.value = '100%';
@@ -40,7 +40,7 @@ function defaultFormSet () {
   }
 }
 
-function defaultEffectsSet () {
+function setDefaultEffects () {
   previewImgBlock.style.filter = 'none';
   sliderElement.classList.add('visually-hidden');
 }
