@@ -7,7 +7,13 @@ const scaleInput = document.querySelector('.scale__control--value');
 const effectInputNone = document.querySelector('#effect-none');
 const previewImgBlock = document.querySelector('.img-upload__preview');
 const sliderElement = document.querySelector('.effect-level__slider');
+const form = document.querySelector('.img-upload__form');
 
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__text',
+  errorTextParent: 'img-upload__text',
+  errorTextClass: 'img-upload__text-error',
+});
 
 const onPopupEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
@@ -50,3 +56,12 @@ uploadPhotoForm.addEventListener('change', () => {
 });
 
 closePhotoFormBtn.addEventListener('click', closePhotoForm);
+
+const onFormValid = (evt) => {
+  const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
+  }
+};
+
+form.addEventListener('submit', onFormValid);
