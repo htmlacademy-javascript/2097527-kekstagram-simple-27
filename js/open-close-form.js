@@ -1,5 +1,5 @@
 import {sendData} from './api.js';
-import {getSuccessMessage} from './messages.js';
+import {getSuccessMessage, getErrorMessage} from './messages.js';
 
 const photoForm = document.querySelector('.img-upload__overlay');
 const closePhotoFormBtn = document.querySelector('#upload-cancel');
@@ -20,7 +20,7 @@ const pristine = new Pristine(form, {
 }, false);
 
 function onPopupEscKeydown (evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === 'Escape' && !(document.querySelector('.error'))) {
     evt.preventDefault();
     closePhotoForm();
   }
@@ -83,7 +83,7 @@ const setUserFormSubmit = (onSuccess) => {
           getSuccessMessage();
         },
         () => {
-
+          getErrorMessage();
           unblockSubmitButton();
         },
         new FormData(evt.target),

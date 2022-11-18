@@ -1,4 +1,5 @@
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
+const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 const body = document.querySelector('body');
 
 const showAlert = (message) => {
@@ -48,4 +49,34 @@ const getSuccessMessage = () => {
   }
 };
 
-export {showAlert, getSuccessMessage};
+const getErrorMessage = () => {
+  const errorMessageFragment = document.createDocumentFragment();
+  const errorMessageItem = errorMessageTemplate.cloneNode(true);
+  errorMessageFragment.appendChild(errorMessageItem);
+  body.appendChild(errorMessageFragment);
+
+  document.addEventListener('keydown', onErrorMesEscKeydown);
+  document.querySelector('.error__button').addEventListener('click', closeErrorMesOnBtn);
+
+  document.querySelector('.error').addEventListener('click', (evt) => {
+    if (evt.target.className !== 'error__inner') {
+      errorMessageItem.remove();
+      document.removeEventListener('keydown', onErrorMesEscKeydown);
+    }
+  });
+
+  function onErrorMesEscKeydown (evt) {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      errorMessageItem.remove();
+      document.removeEventListener('keydown', onErrorMesEscKeydown);
+    }
+  }
+
+  function closeErrorMesOnBtn () {
+    errorMessageItem.remove();
+    document.removeEventListener('keydown', onErrorMesEscKeydown);
+  }
+};
+
+export {showAlert, getSuccessMessage, getErrorMessage};
