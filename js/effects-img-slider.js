@@ -27,54 +27,58 @@ noUiSlider.create(sliderElement, {
 });
 
 fieldsetEffects.addEventListener('change', (evt) => {
-  if (evt.target.id === 'effect-none' ) {
-    sliderElement.classList.add('visually-hidden');
-    if (previewImgBlock.classList.contains('effects__preview--none')) {
-      previewImgBlock.style.filter = 'none';
-    }
-  }
-  if(!(evt.target.id === 'effect-none')) {
-    sliderElement.classList.remove('visually-hidden');
-  }
-  if (evt.target.id === 'effect-chrome' || evt.target.id === 'effect-sepia') {
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: 0,
-        max: 1,
-      },
-      start: 1,
-      step: 0.1,
-    });
-  }
-  if (evt.target.id === 'effect-marvin') {
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: 0,
-        max: 100,
-      },
-      start: 100,
-      step: 1,
-    });
-  }
-  if (evt.target.id === 'effect-phobos') {
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: 0,
-        max: 3,
-      },
-      start: 3,
-      step: 0.1,
-    });
-  }
-  if (evt.target.id === 'effect-heat') {
-    sliderElement.noUiSlider.updateOptions({
-      range: {
-        min: 1,
-        max: 3,
-      },
-      start: 3,
-      step: 0.1,
-    });
+  switch(evt.target.id) {
+    case 'effect-chrome' :
+    case 'effect-sepia' :
+      sliderElement.classList.remove('visually-hidden');
+      sliderElement.noUiSlider.updateOptions({
+        range: {
+          min: 0,
+          max: 1,
+        },
+        start: 1,
+        step: 0.1,
+      });
+      break;
+    case 'effect-marvin' :
+      sliderElement.classList.remove('visually-hidden');
+      sliderElement.noUiSlider.updateOptions({
+        range: {
+          min: 0,
+          max: 100,
+        },
+        start: 100,
+        step: 1,
+      });
+      break;
+    case 'effect-phobos' :
+      sliderElement.classList.remove('visually-hidden');
+      sliderElement.noUiSlider.updateOptions({
+        range: {
+          min: 0,
+          max: 3,
+        },
+        start: 3,
+        step: 0.1,
+      });
+      break;
+    case 'effect-heat' :
+      sliderElement.classList.remove('visually-hidden');
+      sliderElement.noUiSlider.updateOptions({
+        range: {
+          min: 1,
+          max: 3,
+        },
+        start: 3,
+        step: 0.1,
+      });
+      break;
+    default:
+      sliderElement.classList.add('visually-hidden');
+      if (previewImgBlock.classList.contains('effects__preview--none')) {
+        previewImgBlock.style.filter = 'none';
+      }
+      break;
   }
 });
 
