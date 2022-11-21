@@ -9,7 +9,7 @@ function getRandomInteger(min, max) {
   return NaN;
 }
 
-function lengthComment(comment,maxLength) {
+function getLengthComment(comment,maxLength) {
   if (comment.length <= maxLength && typeof inputComment === 'string') {
     return true;
   }
@@ -20,4 +20,4 @@ const getRandomArrayElement = function(array) {
   return array[getRandomInteger(0, array.length - 1)];
 };
 
-export {getRandomArrayElement, getRandomInteger, lengthComment};
+export {getRandomArrayElement, getRandomInteger, getLengthComment};

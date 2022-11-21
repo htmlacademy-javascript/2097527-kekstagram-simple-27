@@ -19,28 +19,20 @@ const pristine = new Pristine(form, {
   errorTextClass: 'img-upload__text-error',
 }, false);
 
-function onPopupEscKeydown (evt) {
+const onPopupEscKeydown = (evt) => {
   if (evt.key === 'Escape' && !(document.querySelector('.error'))) {
     evt.preventDefault();
     closePhotoForm();
   }
-}
+};
 
-function openPhotoForm () {
+const openPhotoForm = () => {
   photoForm.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
-}
+};
 
-function closePhotoForm () {
-  photoForm.classList.add('hidden');
-  body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onPopupEscKeydown);
-  setDefaultForm();
-  setDefaultEffects();
-}
-
-function setDefaultForm () {
+const setDefaultForm = () => {
   uploadPhotoForm.value = '';
   commentText.value = '';
   scaleInput.value = '100%';
@@ -48,11 +40,19 @@ function setDefaultForm () {
   if (!effectInputNone.checked) {
     effectInputNone.checked = true;
   }
-}
+};
 
-function setDefaultEffects () {
+const setDefaultEffects = () => {
   previewImgBlock.style.filter = 'none';
   sliderElement.classList.add('visually-hidden');
+};
+
+function closePhotoForm () {
+  photoForm.classList.add('hidden');
+  body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onPopupEscKeydown);
+  setDefaultForm();
+  setDefaultEffects();
 }
 
 uploadPhotoForm.addEventListener('change', () => {
