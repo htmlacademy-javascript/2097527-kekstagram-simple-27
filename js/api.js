@@ -1,19 +1,23 @@
 import {showAlert} from './messages.js';
+const failFormMessage = 'Не удалось отправить форму. Попробуйте ещё раз';
+const failGetDataMessage = 'Не удалось получить данные с сервера. Попробуйте перезагрузить страницу';
+const UrlGetData = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const UrlSendData = 'https://27.javascript.pages.academy/kekstagram-simple';
 
 const getData = (onSuccess) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(UrlGetData)
     .then((response) => response.json())
     .then((photos) => {
       onSuccess(photos);
     })
     .catch(() => {
-      showAlert('Не удалось получить данные с сервера. Попробуйте перезагрузить страницу');
+      showAlert(failGetDataMessage);
     });
 };
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://27.javascript.pages.academy/kekstagram-simple',
+    UrlSendData,
     {
       method: 'POST',
       body,
@@ -23,11 +27,11 @@ const sendData = (onSuccess, onFail, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
+        onFail(failFormMessage);
       }
     })
     .catch(() => {
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
+      onFail(failFormMessage);
     });
 };
 
